@@ -1,0 +1,32 @@
+---
+title: "🗃️ Archive"
+summary: "Hiiruki's Blog Archives"
+permalink: "/archive/index.html"
+layout: layouts/default
+css: 
+  - post-list
+---
+
+<h1 class="Heading MarginTop-xxl">
+    <span class="TitleShadow">🗃️ Archive</span>
+</h1>
+
+{% set archive = collections.posts | groupByYear %}
+
+<section class="PostListWrapper" style="--totalPosts: {{ collections.posts.length + 1 }}">
+    <ul class="PostList MarginTop-l" >
+        {% for item in archive %}
+            <li class="List-Item">
+                <h2 class="Heading">
+                    <span class="">{{ item | first }}</span></h2>
+                <ol class="PostList">
+                    {% for item in item | last %}
+                        <li>
+                            <a class="Link PostList-Link MarginTop-s" href="{{item.url}}">{{ item.data.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </li>
+        {% endfor %}
+    </ul>
+</section>

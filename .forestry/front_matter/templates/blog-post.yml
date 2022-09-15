@@ -1,0 +1,38 @@
+# Well, I didn't use Forestry for now.
+# I prefer to write manually in markdown using the text editor.
+# There might be something here in the future but there isn't right now.
+
+---
+label: Blog Post
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: datetime
+  name: date
+  label: date
+- type: textarea
+  name: summary
+  label: summary
+- type: list
+  name: tags
+  label: tags
+- name: draft
+  type: boolean
+  label: draft
+- name: postImage
+  type: text
+  config:
+    required: false
+  label: post image
+- name: postImageCredits
+  type: text
+  config:
+    required: false
+  label: post image credits
+- name: postImageSource
+  type: text
+  config:
+    required: false
+  label: post image source

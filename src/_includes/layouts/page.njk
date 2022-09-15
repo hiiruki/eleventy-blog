@@ -1,0 +1,19 @@
+---
+ css: 
+    - 'post'
+    - 'prism'
+ js: 
+    - 'post'
+ ogtype: article
+---
+{% extends 'layouts/base.njk' %}
+
+{% block content %}
+    <h1 class="Heading PageHeader--Heading">
+            <span>{{title}}</span>
+        </h1>
+
+    <article class="Article">
+        {{ content | safe }}
+    </article>
+{% endblock %}

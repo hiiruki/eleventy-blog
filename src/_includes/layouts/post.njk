@@ -1,0 +1,67 @@
+---
+ css: 
+    - 'post'
+    - 'prism'
+ ogtype: article
+---
+{% extends 'layouts/base.njk' %}
+
+{% block content %}
+    <section class="PageHeader MarginTop-xxl">
+        <h1 class="Heading PageHeader--Heading">
+            <span>{{title}}</span>
+        </h1>
+        <div class="Text--Secondary MarginY-xxs">
+            <time>{{ date | date_formatted }}</time>
+            <span>
+                {% for tag in tags %}
+                    <a href="/tags/{{tag}}" class="TagLink">#{{ tag }}</a>
+                {% endfor %}
+            </span>
+            <span class="Reading-Time">
+                ({{ content | readingTime }})
+            </span>
+        </div>
+
+        <div class="PostSummary">
+            <strong>tl;dr: </strong>{{summary}}
+        </div>
+    </section>
+
+    {% if postImage %}
+        <section class="Banner-Image" id="banner">
+            {%  resI postImage, title, [750, 900, 1200]  %}
+            {% if postImageCredits %}
+              <div class="Credits">
+                  {%  Link postImageCredits | linkUrl, true, postImageCredits | linkName, "Link", true  %}
+                  on
+                  {%  Link postImageSource | linkUrl, true, postImageSource | linkName, "Link", true  %}
+              </div>
+            {% endif %}
+        </section>
+    {% endif %}
+
+    <article class="Article">
+        {{ content | safe }}
+    </article>
+
+    <section class="other-links">
+        <ul class="post-nav">
+            {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+            {%- if nextPost %}
+                <li class="next">
+                    {% Link nextPost.url | url, false, nextPost.data.title, "Link" %}
+                    <i class="fas fa-chevron-right"></i>
+                </li>
+            {% endif %}
+            {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+            {%- if previousPost %}
+                <li class="previous">
+                    <i class="fas fa-chevron-left"></i>
+                    {% Link previousPost.url | url, false, previousPost.data.title, "Link" %}
+                </li>
+            {% endif %}
+        </ul>
+    </section>
+
+{% endblock %}

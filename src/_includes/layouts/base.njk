@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#0055FF"/>
+        <meta name="robots" content="index,follow"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+        <link rel="preload"
+              href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap"
+              as="style"
+              onload="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript>
+          <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+        </noscript>
+        <script src="https://kit.fontawesome.com/e1454ae041.js" crossorigin="anonymous" defer></script>
+        <script src="https://unpkg.com/lite-iframe@0.3.0/dist/lite-iframe.esm.js" type="module"></script>
+        {% include "partials/meta-head.njk" %}
+
+        {% set headjs %}
+        {% include "assets/js/head.js" %}
+        {% endset %}
+        <script>
+            {{ headjs | jsmin | safe }}
+        </script>
+
+        {% set css %}
+        {% include "assets/css/normalize.css" %}
+        {% include "assets/css/variables.css" %}
+        {% include "assets/css/app.css" %}
+        {% if css.length > 0 %}
+            {% for file in css %}
+                {% include "assets/css/" + file + ".css" %}
+            {% endfor %}
+        {% endif %}
+
+        {% endset %}
+        <style>
+            {{css | cssmin | safe}}
+        </style>
+    </head>
+    <body>
+
+        <a href="#main-content" class="SkipContent">
+            Skip to main content
+        </a>
+
+        <div class="Container">
+            {% include "partials/header.njk" %}
+            <main id="main-content" class="Content" tabindex="-1">
+                {% block header %}{% endblock %}
+                {% block content %}{% endblock content %}
+
+            </main>
+            {% include "partials/footer.njk" %}
+        </div>
+
+        {% set js %}
+        {% include "assets/js/instant.js" %}
+        {% include "assets/js/app.js" %}
+        {% if js.length > 0 %}
+            {% for file in js %}
+                {% include "assets/js/" + file + ".js" %}
+            {% endfor %}
+        {% endif %}
+        {% endset %}
+        <script>
+            {{ js | jsmin | safe }}
+        </script>
+    </body>
+</html>

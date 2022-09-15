@@ -1,0 +1,50 @@
+---
+title: "Blog"
+summary: "Cyber Security and Other Tech Stuff"
+permalink: /index.html
+ogtype: website
+layout: layouts/default
+---
+
+<p>Hi! I'm Hiiruki (ひるき) 👋</p>
+<p>Talks about cyber security, GNU/Linux, programming and other tech stuff.</p>
+<a class="Link" href="/about">About me →</a>
+
+<section>
+  <ul class="List MarginTop-xxl">
+    {% for post in collections.posts | take(site.maxPostsInHomePage) %}
+      <li class="List-Item">
+        <h1 class="Heading">
+          <a class="List-ItemLink" href="{{ post.url }}">
+            <span class="TitleShadow Link Link--OnHover">{{ post.data.title }}</span>
+            <span aria-hidden="true" class="List-ItemVisitedStatus"></span>
+          </a>
+        </h1>
+        <div class="Text--Secondary MarginY-xxs">
+          <time>{{ post.date | date_formatted }}</time>
+          <span>
+            {% for tag in post.data.tags %}
+              <a href="/tags/{{tag}}" class="TagLink">#{{ tag }}</a>
+            {% endfor %}
+          </span>
+          <span class="Reading-Time">
+            ({{ post | readingTime }})
+          </span>
+        </div>
+        <p class="Margin-1">{{ post.data.summary | markdownify_inline | safe }}</p>
+        <div>
+          <a href="{{ post.url }}" class="Link" >Read more ⟶</a>
+        </div>
+      </li>
+      {# <hr class="List-Separator"> #}
+    {% endfor %}
+  </ul>
+</section>
+
+{% if collections.posts.length > site.maxPostsInHomePage %}
+  <section class="MarginTop-xxxl">
+    For more blog posts, you can visit
+    <a href="/archive" class="Link">
+      the archive</a>.
+  </section>
+{% endif %}

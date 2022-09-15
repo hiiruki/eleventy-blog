@@ -1,0 +1,15 @@
+# Blog
+/blog             /archive
+/post             /archive
+/article          /archive
+
+# Security
+/security.txt     /.well-known/security.txt
+/hof.txt          /.well-known/hof.txt
+
+# ¯\_(ツ)_/¯
+/admin            https://github.co/video
+/administrator    https://github.co/video
+/login            https://github.co/video
+/cpanel           https://github.co/video
+/secret           https://github.co/video

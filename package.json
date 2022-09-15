@@ -1,0 +1,44 @@
+{
+  "name": "hiiruki.dev",
+  "version": "1.0.0",
+  "description": "Hiiruki's Personal Website - Powered by Eleventy",
+  "main": "index.js",
+  "scripts": {
+    "dev:11ty": "npx eleventy --config=_11ty/config.js --serve --watch",
+    "prod:11ty": "npx eleventy --config=_11ty/config.js",
+    "start": "npm run dev:11ty",
+    "build": "npm run prod:11ty",
+    "generate": "node tools/generate.js"
+  },
+  "keywords": [],
+  "author": "Hiiruki",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy-navigation": "^0.3.3",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
+    "clean-css": "^5.3.1",
+    "dayjs": "^1.11.4",
+    "eleventy-plugin-lazyimages": "2.1.2",
+    "generate-template-files": "^3.2.1",
+    "html-minifier": "^4.0.0",
+    "markdown-it": "^13.0.1",
+    "markdown-it-anchor": "^8.6.4",
+    "markdown-it-image-figures": "^2.1.0",
+    "npm-run-all": "^4.1.5",
+    "terser": "^5.14.2"
+  },
+  "dependencies": {
+    "@11ty/eleventy-img": "^2.0.1",
+    "@quasibit/eleventy-plugin-sitemap": "^2.1.5",
+    "eleventy-plugin-reading-time": "^0.0.1",
+    "eleventy-plugin-seo": "^0.5.2",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-attrs": "^4.1.4",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-emoji": "^2.0.2",
+    "markdown-it-footnote": "^3.0.3",
+    "markdown-it-span": "^1.0.0"
+  }
+}
